@@ -53,17 +53,6 @@ def run_and_check(args, check, message, failure, success, console=con):
         sys.exit(1)
 
 
-#def _hack_in_the_plugins():
-    """Add the plugins to QIIME."""
-    import qiime2.sdk as sdk
-    from importlib.metadata import entry_points
-
-    pm = sdk.PluginManager(add_plugins=False)
-    for entry in entry_points()["qiime2.plugins"]:
-        plugin = entry.load()
-        package = entry.value.split(':')[0].split('.')[0]
-        pm.add_plugin(plugin, package, entry.name)
-
 
 if __name__ == "__main__":
     if not has_conda:
